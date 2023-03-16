@@ -5,6 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 2rem;
+
+  @media screen and (max-width: 768px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 code {
