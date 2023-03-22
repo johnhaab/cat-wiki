@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../../assets/CatwikiLogo.svg";
+import Rating from "../../components/Rating/Rating";
 
 import "./CatDetails.scss";
 
@@ -36,7 +37,35 @@ const CatDetails = ({ data }) => {
               <p className="life-span">
                 Life Span: <span>{data.life_span} years</span>
               </p>
-              <div className="low-level"></div>
+              <div className="low-level">
+                <div className="adapt">
+                  <p>Adaptability:</p>
+                  <Rating boxCount={data.adaptability} />
+                </div>
+                <div className="affection">
+                  <p>Affection level:</p>
+                  <Rating boxCount={data.affection_level} />
+                </div>
+                <div className="adapt">
+                  <p>Child Friendly:</p>
+                  <Rating boxCount={data.child_friendly} />
+                </div>
+                <div className="adapt">
+                  <Rating boxCount={data.adaptability} />
+                </div>
+                <div className="adapt">
+                  <Rating boxCount={data.adaptability} />
+                </div>
+                <div className="adapt">
+                  <Rating boxCount={data.adaptability} />
+                </div>
+                <div className="adapt">
+                  <Rating boxCount={data.adaptability} />
+                </div>
+                <div className="adapt">
+                  <Rating boxCount={data.adaptability} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
