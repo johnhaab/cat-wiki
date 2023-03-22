@@ -12,7 +12,6 @@ $main-color: #291507;
 
         .container-cat-photo {
             display: flex;
-            align-items: center;
     
             .box-for-photo {
                 background-color: #DEC68B;
@@ -49,7 +48,7 @@ $main-color: #291507;
 
                 .temp {
                     color: $main-color;
-                    padding-top: 1rem;
+                    padding-top: 1.5rem;
                     font-weight: 600;
 
                     span {
@@ -59,7 +58,7 @@ $main-color: #291507;
 
                 .origin {
                     color: $main-color;
-                    padding-top: 1rem;
+                    padding-top: 1.5rem;
                     font-weight: 600;
 
                     span {
@@ -69,13 +68,90 @@ $main-color: #291507;
 
                 .life-span {
                     color: $main-color;
-                    padding-top: 1rem;
+                    padding-top: 1.5rem;
                     font-weight: 600;
 
                     span {
                         font-weight: 400;
                     }
                 }
+            }
+
+            .low-level {
+                padding-top: 1.5rem;
+                border 1px
+
+                .adapt {
+                    display: flex;
+
+                    p {
+                        font-weight: 600;
+                    }
+                }
+
+                .affection {
+                    display: flex;
+                    padding-top: 1.5rem;
+
+                    p {
+                        font-weight: 600;
+                    }
+                }
+
+                .child {
+                    display: flex;
+                    padding-top: 1.5rem;
+
+                    p {
+                        font-weight: 600;
+                    }
+                }
+
+                .grooming {
+                    display: flex;
+                    padding-top: 1.5rem;
+
+                    p {
+                        font-weight: 600;
+                    }
+                }
+
+                .intel {
+                    display: flex;
+                    padding-top: 1.5rem;
+
+                    p {
+                        font-weight: 600;
+                    }
+                }
+
+                .health {
+                    display: flex;
+                    padding-top: 1.5rem;
+
+                    p {
+                        font-weight: 600;
+                    }
+                }
+
+                .social {
+                    display: flex;
+                    padding-top: 1.5rem;
+
+                    p {
+                        font-weight: 600;
+                    }
+                }
+
+                .stranger {
+                    display: flex;
+                    padding-top: 1.5rem;
+
+                    p {
+                        font-weight: 600;
+                    }
+                }
+                
             }
         }
     }

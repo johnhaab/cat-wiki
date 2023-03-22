@@ -35,7 +35,7 @@ const CatDetails = ({ data }) => {
                 Origin: <span>{data.origin}</span>
               </p>
               <p className="life-span">
-                Life Span: <span>{data.life_span} years</span>
+                Life span: <span>{data.life_span} years</span>
               </p>
               <div className="low-level">
                 <div className="adapt">
@@ -46,24 +46,29 @@ const CatDetails = ({ data }) => {
                   <p>Affection level:</p>
                   <Rating boxCount={data.affection_level} />
                 </div>
-                <div className="adapt">
+                <div className="child">
                   <p>Child Friendly:</p>
                   <Rating boxCount={data.child_friendly} />
                 </div>
-                <div className="adapt">
-                  <Rating boxCount={data.adaptability} />
+                <div className="grooming">
+                  <p>Grooming:</p>
+                  <Rating boxCount={data.grooming} />
                 </div>
-                <div className="adapt">
-                  <Rating boxCount={data.adaptability} />
+                <div className="intel">
+                  <p>Intelligence:</p>
+                  <Rating boxCount={data.intelligence} />
                 </div>
-                <div className="adapt">
-                  <Rating boxCount={data.adaptability} />
+                <div className="health">
+                  <p>Health issues:</p>
+                  <Rating boxCount={data.health_issues} />
                 </div>
-                <div className="adapt">
-                  <Rating boxCount={data.adaptability} />
+                <div className="social">
+                  <p>Social needs:</p>
+                  <Rating boxCount={data.social_needs} />
                 </div>
-                <div className="adapt">
-                  <Rating boxCount={data.adaptability} />
+                <div className="stranger">
+                  <p>Stranger friendly:</p>
+                  <Rating boxCount={data.stranger_friendly} />
                 </div>
               </div>
             </div>
