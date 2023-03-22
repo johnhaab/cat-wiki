@@ -60,8 +60,7 @@ class Main extends Component {
   async componentDidMount() {
     await axios
       .get(
-        "https://api.thecatapi.com/v1/breeds?&api_key=" +
-          "live_c2XLSKXZ5gDb1bxbUKzqjkGoSA8cJXprOsqkeHYRLzBlsnmUsk52jXvmxrcLi8ZZ"
+        "https://api.thecatapi.com/v1/breeds?&api_key=live_c2XLSKXZ5gDb1bxbUKzqjkGoSA8cJXprOsqkeHYRLzBlsnmUsk52jXvmxrcLi8ZZ"
       )
       .then((response) => {
         this.setState({
@@ -100,7 +99,9 @@ class Main extends Component {
   };
 
   handleCatClick = async (catId) => {
-    const response = await fetch("https://api.thecatapi.com/v1/breeds");
+    const response = await fetch(
+      "https://api.thecatapi.com/v1/breeds?&api_key=live_c2XLSKXZ5gDb1bxbUKzqjkGoSA8cJXprOsqkeHYRLzBlsnmUsk52jXvmxrcLi8ZZ"
+    );
     const data = await response.json();
     const selectedCat = await data.find((cat) => cat.id === catId);
     this.setState({ catData: selectedCat });

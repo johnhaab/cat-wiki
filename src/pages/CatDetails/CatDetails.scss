@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$font: 'Montserrat', sans-serif;
+$main-color: #291507;
+
+.container-cat-details {
+
+    .container-cat-text {
+        display: flex;
+        padding-top: 2rem;
+        gap: 7rem;
+
+        .container-cat-photo {
+            display: flex;
+            align-items: center;
+    
+            .box-for-photo {
+                background-color: #DEC68B;
+                width: 10px;
+                height: 290px;
+                border-top-left-radius: 1rem;
+                border-bottom-left-radius: 1rem;
+            }
+    
+            img {
+                width: 350px;
+                height: 350px;
+                object-fit: cover;
+                border-radius: 1rem;
+            }
+        }
+
+        .container-cat-desc {
+            max-width: 40rem;
+
+            .top-level {
+                
+                h1 {
+                    font-size: 2rem;
+                    font-weight: 600;
+                    color: $main-color;
+
+                    padding-bottom: 1.5rem;
+                }
+
+                .desc {
+                    color: $main-color;
+                }
+
+                .temp {
+                    color: $main-color;
+                    padding-top: 1rem;
+                    font-weight: 600;
+
+                    span {
+                        font-weight: 400;
+                    }
+                }
+
+                .origin {
+                    color: $main-color;
+                    padding-top: 1rem;
+                    font-weight: 600;
+
+                    span {
+                        font-weight: 400;
+                    }
+                }
+
+                .life-span {
+                    color: $main-color;
+                    padding-top: 1rem;
+                    font-weight: 600;
+
+                    span {
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        display: flex;
+        align-items: flex-start;
+    }
+}
