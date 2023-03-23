@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../assets/CatwikiLogo.svg";
 import Rating from "../../components/Rating/Rating";
 
 import "./CatDetails.scss";
 
 const CatDetails = ({ data }) => {
+  const catId = data.id;
   const temp = data.temperament.split(", ");
+
+  const [catPhotos, setCatPhotos] = React.useState([]);
+
+  const getCatPhotos = async () => {
+    const response = await fetch(
+      `https://api.thecatapi.com/v1/images/search?limit=8&breed_ids=${catId}&api_key=live_c2XLSKXZ5gDb1bxbUKzqjkGoSA8cJXprOsqkeHYRLzBlsnmUsk52jXvmxrcLi8ZZ`
+    );
+    const data = await response.json();
+    setCatPhotos(data);
+    console.log(data);
+  };
+
+  useEffect(() => {
+    getCatPhotos();
+  }, []);
+
   return (
     <div className="container-cat-details">
       <img src={Logo} alt="CatwikiLogo" className="logo" />
@@ -75,7 +92,19 @@ const CatDetails = ({ data }) => {
           </div>
         </div>
       </section>
-      {/* <footer>
+      <section className="container-cat-photos">
+        <h1>Other photos</h1>
+        <div className="cat-photos">
+          {catPhotos.map((item, index) => {
+            return (
+              <div key={index} className="cat-photo">
+                <img src={item.url} alt={data.name} />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      <footer>
         <img src={Logo} alt="logo" />
         <p>
           &copy; created by{" "}
@@ -84,7 +113,7 @@ const CatDetails = ({ data }) => {
           </span>{" "}
           - devChallenge.io 2023
         </p>
-      </footer> */}
+      </footer>
     </div>
   );
 };
