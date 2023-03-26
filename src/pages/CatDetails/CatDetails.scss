@@ -188,6 +188,9 @@ $main-color: #291507;
 
     .container-cat-photos {
         color: #291507;
+        width: max-content;
+        // border: 1px solid red;
+        width: 100%;
 
         .cat-photos {
             display: flex;
@@ -196,8 +199,8 @@ $main-color: #291507;
             padding-top: 1.5rem;
 
             img {
-                width: 250px;
-                height: 250px;
+                width: 280px;
+                height: 280px;
                 object-fit: cover;
                 border-radius: 1rem;
             }
