@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Logo from "../../assets/CatwikiLogo.svg";
 import Rating from "../../components/Rating/Rating";
+import { Link } from "react-router-dom";
 
 import "./CatDetails.scss";
 
@@ -12,7 +13,7 @@ const CatDetails = ({ data }) => {
 
   const getCatPhotos = async () => {
     const response = await fetch(
-      `https://api.thecatapi.com/v1/images/search?limit=8&breed_ids=${catId}&api_key=live_c2XLSKXZ5gDb1bxbUKzqjkGoSA8cJXprOsqkeHYRLzBlsnmUsk52jXvmxrcLi8ZZ`
+      `https://wild-slug-hosiery.cyclic.app/api/cats/photos/${catId}`
     );
     const data = await response.json();
     setCatPhotos(data);
@@ -25,7 +26,9 @@ const CatDetails = ({ data }) => {
 
   return (
     <div className="container-cat-details">
-      <img src={Logo} alt="CatwikiLogo" className="logo" />
+      <Link to="/">
+        <img src={Logo} alt="CatwikiLogo" className="logo" />
+      </Link>
 
       <section className="container-cat-body">
         <div className="container-cat-text">

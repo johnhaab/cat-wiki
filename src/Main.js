@@ -4,6 +4,7 @@ import Landing from "./pages/Landing/Landing";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import CatDetails from "./pages/CatDetails/CatDetails";
+import TopTen from "./pages/TopTen/TopTen";
 
 class Main extends Component {
   constructor(props) {
@@ -19,6 +20,8 @@ class Main extends Component {
       isClicked: false,
       isOnDetailsPage: false,
       catData: null,
+      topTenCats: [],
+      topTenCatsDetails: [],
     };
   }
 
@@ -59,13 +62,10 @@ class Main extends Component {
 
   async componentDidMount() {
     await axios
-      .get(
-        "https://api.thecatapi.com/v1/breeds?&api_key=live_c2XLSKXZ5gDb1bxbUKzqjkGoSA8cJXprOsqkeHYRLzBlsnmUsk52jXvmxrcLi8ZZ"
-      )
+      .get("https://wild-slug-hosiery.cyclic.app/api/cats")
       .then((response) => {
         this.setState({
           data: response.data,
-          isLoaded: true,
         });
         console.log(this.state.data);
       })
@@ -73,8 +73,8 @@ class Main extends Component {
         // console.log(error);
       });
 
-    this.detechDeviceType();
-    console.log(this.state.device);
+    await this.detechDeviceType();
+    await this.getTopTen();
   }
 
   handleSearch = (e) => {
@@ -98,13 +98,39 @@ class Main extends Component {
     );
   };
 
+  getTopTen = async () => {
+    const response = await fetch(
+      "https://wild-slug-hosiery.cyclic.app/api/cats/top"
+    );
+    const data = await response.json();
+
+    await this.setState({ topTenCats: data }, () => {
+      console.log("Top cats today:", data);
+      this.getTopTenCatsDetails();
+    });
+  };
+
+  getTopTenCatsDetails = () => {
+    console.log("1");
+    const { data, topTenCats } = this.state;
+
+    const topTenCatsDetails = topTenCats.map((topCat) => {
+      return data.find((cat) => cat.id === topCat.id);
+    });
+
+    this.setState({ topTenCatsDetails: topTenCatsDetails, isLoaded: true });
+
+    console.log("Top cats today details:", topTenCatsDetails);
+  };
+
   handleCatClick = async (catId) => {
     const response = await fetch(
-      "https://api.thecatapi.com/v1/breeds?&api_key=live_c2XLSKXZ5gDb1bxbUKzqjkGoSA8cJXprOsqkeHYRLzBlsnmUsk52jXvmxrcLi8ZZ"
+      "https://wild-slug-hosiery.cyclic.app/api/cats"
     );
     const data = await response.json();
     const selectedCat = await data.find((cat) => cat.id === catId);
     this.setState({ catData: selectedCat });
+    fetch(`https://wild-slug-hosiery.cyclic.app/api/cats/points/${catId}`);
     console.log(selectedCat);
   };
 
@@ -125,6 +151,7 @@ class Main extends Component {
             mobileSearchTerm={this.state.mobileSearchTerm}
             handleCatClick={this.handleCatClick}
             fetchCatData={this.fetchCatData}
+            topTenCatsDetails={this.state.topTenCatsDetails}
           />
         ),
       },
@@ -132,6 +159,25 @@ class Main extends Component {
         path: "/details",
         element: this.state.catData ? (
           <CatDetails data={catInfo} />
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <CircularProgress />
+            <p style={{ paddingTop: "2rem" }}>Loading, please be paitent.</p>
+          </div>
+        ),
+      },
+      {
+        path: "/leaderboard",
+        element: this.state.topTenCatsDetails ? (
+          <TopTen topTenCatsDetails={this.state.topTenCatsDetails} />
         ) : (
           <div
             style={{

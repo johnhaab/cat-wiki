@@ -173,7 +173,7 @@ $main-color: #291507;
                 }
 
                 @media screen and (max-width: 768px) {
-                    width: 100%;
+                    width: 101%;
                     padding-bottom: 2.5rem;
                 }
                 
@@ -203,6 +203,11 @@ $main-color: #291507;
                 height: 280px;
                 object-fit: cover;
                 border-radius: 1rem;
+
+                @media screen and (min-width: 768px) and (max-width: 1200px) {
+                    width: 191px;
+                    height: 191px;
+                }
             }
         }
 

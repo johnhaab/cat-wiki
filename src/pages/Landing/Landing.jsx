@@ -4,6 +4,7 @@ import Logo from "../../assets/CatwikiLogo.svg";
 
 import AutocompleteSearch from "../../components/AutocompleteSearch/Autocomplete";
 import { CgArrowLongRight } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 import CatOne from "../../assets/image 1.png";
 import CatTwo from "../../assets/image 2.png";
@@ -20,6 +21,7 @@ const Landing = ({
   handleCatClick,
   mobileSearchTerm,
   fetchCatData,
+  topTenCatsDetails,
 }) => {
   return (
     <div className="container">
@@ -59,10 +61,15 @@ const Landing = ({
           <h1>
             66+ Breeds For you <br /> to discover
           </h1>
-          <div className="wrapper-see-more">
-            <p>SEE MORE</p>
-            <CgArrowLongRight className="arrow" />
-          </div>
+          <Link
+            to="/leaderboard"
+            style={{ textDecoration: "none", padding: "0", margin: "0" }}
+          >
+            <div className="wrapper-see-more">
+              <p>SEE MORE</p>
+              <CgArrowLongRight className="arrow" />
+            </div>
+          </Link>
         </div>
 
         <div className="images">
@@ -71,35 +78,35 @@ const Landing = ({
               <div className="yellow"></div>
               <img
                 className="img-one"
-                src="https://cdn2.thecatapi.com/images/GAmy2bg8G.jpg"
+                src={topTenCatsDetails[0].image.url}
                 alt="cat #1"
               ></img>
             </div>
-            <p>{data[10].name}</p>
+            <p>{topTenCatsDetails[0].name}</p>
           </div>
           <div className="two">
             <img
               className="img-two"
-              src={data[53].image.url}
+              src={topTenCatsDetails[1].image.url}
               alt="cat #2"
             ></img>
-            <p>{data[53].name}</p>
+            <p>{topTenCatsDetails[1].name}</p>
           </div>
           <div className="three">
             <img
               className="img-three"
-              src={data[45].image.url}
+              src={topTenCatsDetails[2].image.url}
               alt="cat #3"
             ></img>
-            <p>{data[45].name}</p>
+            <p>{topTenCatsDetails[2].name}</p>
           </div>
           <div className="four">
             <img
               className="img-four"
-              src="https://www.purina.co.uk/sites/default/files/styles/square_medium_440x440/public/2022-06/Selkirk%20Rex.1.jpg?h=61b858be&itok=bT5svOn1"
+              src={topTenCatsDetails[3].image.url}
               alt="cat #4"
             ></img>
-            <p>{data[55].name}</p>
+            <p>{topTenCatsDetails[3].name}</p>
           </div>
         </div>
       </div>
